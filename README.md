@@ -5,6 +5,37 @@ A C implementation of an LC4 instruction interpreter with an interactive debugge
 **Author:** Lulin He  
 **Stack:** C11, Make, Python 3 for CLI tests
 
+## Features
+
+- Eight 16-bit registers, a 16-bit PC, NZP condition codes, and 65,536 word-addressed memory locations.
+- Instruction execution for arithmetic, logic, comparison, shifts, branches, calls, jumps, loads, stores, constants, TRAP, and RTI.
+- Single-step execution and bounded execution with `run N`.
+- Register and memory inspection with input validation.
+- Signed immediate decoding, 16-bit wrapping, and conditional NZP updates.
+- A standalone text-hex loader with comments and address markers.
+- CPU regression checks and black-box debugger tests.
+
+## Build and Run
+
+Use a C11 compiler and Make on Linux, WSL, or another compatible environment. Python 3 is needed only for the CLI test suite.
+
+```sh
+make
+./lc4_debugger examples/arithmetic.hex
+```
+
+An optional second argument sets the initial PC and the default load address. Addresses are hexadecimal:
+
+```sh
+./lc4_debugger examples/arithmetic.hex 0020
+```
+
+Override the compiler when needed:
+
+```sh
+make CC=gcc
+```
+
 ## Demo
 
 The included example computes **5 + 4 + 3 + 2 + 1 = 15**, stores the result at **x2000**, and reads it back into **R3**.
@@ -48,37 +79,6 @@ x2000: x000F
 Or add a clickable GIF:
 [![LC4 simulator demo](assets/demo.gif)](YOUR_VIDEO_URL)
 -->
-
-## Features
-
-- Eight 16-bit registers, a 16-bit PC, NZP condition codes, and 65,536 word-addressed memory locations.
-- Instruction execution for arithmetic, logic, comparison, shifts, branches, calls, jumps, loads, stores, constants, TRAP, and RTI.
-- Single-step execution and bounded execution with `run N`.
-- Register and memory inspection with input validation.
-- Signed immediate decoding, 16-bit wrapping, and conditional NZP updates.
-- A standalone text-hex loader with comments and address markers.
-- CPU regression checks and black-box debugger tests.
-
-## Build and Run
-
-Use a C11 compiler and Make on Linux, WSL, or another compatible environment. Python 3 is needed only for the CLI test suite.
-
-```sh
-make
-./lc4_debugger examples/arithmetic.hex
-```
-
-An optional second argument sets the initial PC and the default load address. Addresses are hexadecimal:
-
-```sh
-./lc4_debugger examples/arithmetic.hex 0020
-```
-
-Override the compiler when needed:
-
-```sh
-make CC=gcc
-```
 
 ## Debugger Commands
 
