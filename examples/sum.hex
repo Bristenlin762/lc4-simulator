@@ -1,0 +1,12 @@
+# Compute 5 + 4 + 3 + 2 + 1. Run exactly 21 steps to finish LDR.
+# Result: R0 = R3 = memory[x2000] = x000F; PC = x0009.
+9000 ; x0000: CONST R0, #0  (sum)
+9205 ; x0001: CONST R1, #5  (counter)
+9400 ; x0002: CONST R2, #0
+D520 ; x0003: HICONST R2, x20 (result address x2000)
+1001 ; x0004: ADD R0, R0, R1
+127F ; x0005: ADD R1, R1, #-1
+03FD ; x0006: BRp #-3 (back to x0004)
+7080 ; x0007: STR R0, R2, #0
+6680 ; x0008: LDR R3, R2, #0
+CFFF ; x0009: JMP #-1 (idle loop; not a HALT instruction)

@@ -1,0 +1,7 @@
+# Three constants and two forms of addition; execute six steps.
+9005 ; CONST R0, #5
+9203 ; CONST R1, #3
+1401 ; ADD R2, R0, R1
+14B8 ; ADD R2, R2, #-8
+97FF ; CONST R3, #-1
+18E1 ; ADD R4, R3, #1

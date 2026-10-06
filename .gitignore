@@ -1,0 +1,6 @@
+*.o
+/lc4_debugger
+/tests/test_cpu
+__pycache__/
+*.pyc
+.DS_Store
